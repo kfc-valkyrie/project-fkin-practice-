@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  bot:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@host.docker.internal:5432/HHBot
+      - TELEGRAM_TOKEN=7076611927:AAF140f7l3U-zMQT4KACE7aq9iZQli1x3iU
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: HHBot
